@@ -25,6 +25,8 @@ export default class TablaJugadores extends Component {
       });
   };
 
+  componentDidUpdate = () => {};
+
   loadNombreJugador = () => {
     console.log("PROPS" + this.props.nombrejugador);
     axios
@@ -60,6 +62,19 @@ export default class TablaJugadores extends Component {
           </thead>
           <tbody>
             {this.props.nombreequipo &&
+              this.state.jugadoresEquipo.map((e, index) => {
+                return (
+                  <tr key={index}>
+                    <th>
+                      <img src={e.imagen} alt="" />
+                    </th>
+                    <th>{e.nombre}</th>
+                    <th>{e.posicion}</th>
+                    <th>{e.pais}</th>
+                  </tr>
+                );
+              })}
+            {this.props.nombrejugador &&
               this.state.jugadoresEquipo.map((e, index) => {
                 return (
                   <tr key={index}>
